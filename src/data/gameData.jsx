@@ -1,5 +1,18 @@
 // src/data/gameData.js
 
+// This file acts as the CORE DATA LAYER of the application
+// It contains all static game-related data used across the React system
+// It simulates a backend database for workouts, progression, and game mechanics
+
+// ─────────────────────────────────────────────
+// WORKOUT DATABASE (Core training structure)
+// ─────────────────────────────────────────────
+// This represents a gamified fitness training system
+// Structured by:
+// - Difficulty level (BEGINNER / INTERMEDIATE / EXPERT)
+// - Day schedule (Day 1, Day 2, Day 3)
+// - Workout focus + exercises per session
+
 export const WORKOUT_DATABASE = {
   BEGINNER: {
     'Day 1': {
@@ -27,6 +40,7 @@ export const WORKOUT_DATABASE = {
       ],
     },
   },
+
   INTERMEDIATE: {
     'Day 1': {
       focus: 'Chest & Triceps',
@@ -53,6 +67,7 @@ export const WORKOUT_DATABASE = {
       ],
     },
   },
+
   EXPERT: {
     'Day 1': {
       focus: 'Chest & Triceps',
@@ -81,6 +96,13 @@ export const WORKOUT_DATABASE = {
   },
 }
 
+// ─────────────────────────────────────────────
+// RECOVERY SYSTEM (Post-workout mechanics)
+// ─────────────────────────────────────────────
+// Simulates real-world fitness recovery guidance
+// Includes nutrition, hydration, rest, and recovery instructions
+// This acts like an “AI coaching system” in the app
+
 export const RECOVERY_PROTOCOL = {
   BEGINNER: {
     nutrition:  'Consume 20-30g protein (chicken, eggs, or protein shake) within 30 minutes. Eat a banana or rice for carbs. Drink 500ml water.',
@@ -102,6 +124,12 @@ export const RECOVERY_PROTOCOL = {
   },
 }
 
+// ─────────────────────────────────────────────
+// POST WORKOUT QUESTS (Gamification system)
+// ─────────────────────────────────────────────
+// These are random "mini tasks" shown after workouts
+// They simulate RPG-style side quests to encourage habit-building
+
 export const POST_WORKOUT_QUESTS = [
   'Shadow Training: 10 minutes of light stretching',
   'Mana Recovery: Drink 1L of water immediately',
@@ -110,11 +138,22 @@ export const POST_WORKOUT_QUESTS = [
   "Hunter's Rest: Take a 15-minute power nap",
 ]
 
+// ─────────────────────────────────────────────
+// LEVEL SYSTEM (Progression mechanics)
+// ─────────────────────────────────────────────
+// Defines XP thresholds for leveling up
+// This simulates RPG-style progression in fitness tracking
+
 export const LEVEL_THRESHOLDS = {
   BEGINNER:     { minXP: 0,    maxXP: 500  },
   INTERMEDIATE: { minXP: 500,  maxXP: 1200 },
   EXPERT:       { minXP: 1200, maxXP: Infinity },
 }
+
+// ─────────────────────────────────────────────
+// XP SYSTEM (Reward mechanics)
+// ─────────────────────────────────────────────
+// Defines how much XP is earned per workout per level
 
 export const XP_PER_WORKOUT = {
   BEGINNER:     50,
@@ -122,10 +161,18 @@ export const XP_PER_WORKOUT = {
   EXPERT:       150,
 }
 
+// Spin limit for roulette mechanic (prevents infinite rerolling)
 export const SPIN_LIMIT = 3
+
+// ─────────────────────────────────────────────
+// CHARACTER STAT SYSTEM (RPG-style attributes)
+// ─────────────────────────────────────────────
+// Converts XP into RPG-like stats (STR, AGI, VIT, INT, SEN)
+// This reinforces gamification and progression visualization
 
 export const getCharacterStats = (xp) => {
   const level = Math.floor(xp / 100) + 1
+
   return {
     STR: Math.round(10 + level * 2),
     AGI: Math.round(8  + level * 1.5),
