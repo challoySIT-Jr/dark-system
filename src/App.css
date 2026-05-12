@@ -1,6 +1,6 @@
-/* src/App.css */
+/* Imports external futuristic font used for the whole application */
 @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&display=swap');
-
+/* Root variables store reusable colors for consistent design theme */
 :root {
   --sys-blue:      #00e5ff;
   --sys-blue-dark: #006064;
@@ -10,20 +10,19 @@
   --sys-border:    #1a202c;
   --sys-text:      #e2e8f0;
 }
-
-* {
+/*Global reset removes default browser margin and padding*/
+.{
   box-sizing: border-box;
   margin: 0;
   padding: 0;
   font-family: 'Rajdhani', sans-serif;
 }
-
+/* Body sets overall background color and default text color */
 body {
   background-color: var(--sys-bg);
   color: var(--sys-text);
 }
-
-/* ── Shell ── */
+/* Main container centers the application on screen */
 .system-container {
   min-height: 100vh;
   width: 100vw;
@@ -35,7 +34,7 @@ body {
   position: relative;
   padding: 20px 0;
 }
-
+/* Overlay adds scanline effect for futuristic system interface */
 .system-overlay {
   position: fixed;
   inset: 0;
@@ -47,7 +46,7 @@ body {
   pointer-events: none;
   z-index: 0;
 }
-
+/* Main window acts as the primary app card/container */
 .system-window {
   width: 90%;
   max-width: 500px;
@@ -66,7 +65,7 @@ body {
   overflow-y: auto;
 }
 
-/* ── Header ── */
+/* Header contains title and navigation buttons */
 .system-header {
   padding: 15px 25px;
   background: linear-gradient(90deg, var(--sys-blue-dark), transparent);
@@ -79,7 +78,7 @@ body {
   z-index: 20;
   background-color: rgba(16,20,25,0.98);
 }
-
+/* Header left groups system label and main title */
 .header-left { display: flex; flex-direction: column; }
 .system-label { font-size: 0.7rem; letter-spacing: 2px; color: var(--sys-blue); }
 .main-title   { font-size: 1.5rem; font-weight: 700; letter-spacing: 1px; }
@@ -97,17 +96,18 @@ body {
   font-family: 'Rajdhani', sans-serif;
   text-transform: uppercase;
 }
+/* Navigation container for page buttons */
 .nav-btn:hover, .nav-btn.active { border-color: var(--sys-blue); color: var(--sys-blue); background: rgba(0,229,255,0.07); }
 .nav-btn.danger { border-color: #ff6464; color: #ff6464; }
 .nav-btn.danger:hover { background: rgba(255,100,100,0.1); }
 
-/* ── Page content ── */
+/* Main page content area */
 .system-content {
   padding: 30px;
   min-height: 400px;
   animation: fadeIn 0.4s ease;
 }
-
+/* Section title styling for page headings */
 .section-title {
   font-size: 1.1rem;
   color: var(--sys-blue);
@@ -117,8 +117,7 @@ body {
   text-transform: uppercase;
   letter-spacing: 1px;
 }
-
-/* ── Buttons ── */
+/* Reusable primary system button */
 .system-btn {
   width: 100%;
   padding: 15px;
@@ -134,12 +133,13 @@ body {
   font-family: 'Rajdhani', sans-serif;
   font-size: 0.95rem;
 }
+/* Secondary button variation */
 .system-btn:hover { background: rgba(0,229,255,0.1); box-shadow: inset 0 0 10px rgba(0,229,255,0.2); }
 .system-btn.glow  { background: var(--sys-blue); color: black; }
 .system-btn.glow:hover { box-shadow: 0 0 20px var(--sys-blue); }
 .system-btn.secondary  { border-color: #4a5568; color: #a0aec0; }
 .system-btn:disabled   { opacity: 0.5; cursor: not-allowed; }
-
+/* Text button for smaller clickable actions */
 .text-btn {
   background: none;
   border: none;
@@ -154,7 +154,7 @@ body {
 }
 .text-btn:hover { color: var(--sys-blue); }
 
-/* ── Forms ── */
+/* Form container for survey/user input sections */
 .survey-form .input-group { margin-bottom: 20px; }
 .input-group label { display: block; font-size: 0.8rem; color: #718096; margin-bottom: 8px; letter-spacing: 1px; }
 .input-group input,
@@ -170,19 +170,21 @@ body {
   transition: border 0.3s;
   font-family: 'Rajdhani', sans-serif;
 }
+/* Input group wraps label and form control together */
 .input-group input:focus,
 .input-group select:focus,
 .system-select:focus { border-color: var(--sys-blue); }
 .input-group select option,
 .system-select option { background: #0a0c10; }
 
-/* ── XP Bar ── */
+/* XP section displays user progress system */
 .xp-section {
   background: rgba(0,229,255,0.05);
   border: 1px solid var(--sys-blue-dark);
   padding: 20px;
   margin-bottom: 30px;
 }
+/* XP progress bar background */
 .xp-header { display: flex; justify-content: space-between; margin-bottom: 12px; }
 .xp-label  { font-size: 0.8rem; color: #718096; letter-spacing: 1px; }
 .xp-value  { color: var(--sys-blue); font-weight: 600; }
@@ -193,6 +195,7 @@ body {
   overflow: hidden;
   margin-bottom: 10px;
 }
+/* XP progress bar fill updates dynamically using React state */
 .xp-bar-fill {
   height: 100%;
   background: linear-gradient(90deg, var(--sys-blue), var(--sys-gold));
@@ -201,7 +204,7 @@ body {
 }
 .xp-info { font-size: 0.8rem; color: #a0aec0; text-align: center; }
 
-/* ── Status window ── */
+/* Status window shows player/workout information */
 .status-row { display: flex; gap: 10px; margin-bottom: 20px; font-size: 1.1rem; align-items: center; }
 .label { color: #718096; }
 .value.gold { color: var(--sys-gold); text-shadow: 0 0 5px rgba(255,204,0,0.5); }
@@ -212,6 +215,7 @@ body {
   padding: 20px;
   margin-bottom: 30px;
 }
+/* Stats grid layout for attributes like strength/endurance */
 .status-title {
   font-size: 0.9rem;
   color: var(--sys-blue);
@@ -222,13 +226,13 @@ body {
   padding-bottom: 10px;
 }
 
-/* ── StatBox ── */
+/* Individual stat box component */
 .stats-grid { display: grid; grid-template-columns: repeat(5,1fr); gap: 10px; margin-bottom: 20px; }
 .stat-box   { background: rgba(255,255,255,0.02); border: 1px solid #2d3748; padding: 12px; text-align: center; }
 .stat-label { display: block; font-size: 0.7rem; color: #718096; margin-bottom: 8px; letter-spacing: 1px; font-weight: 600; }
 .stat-value { display: block; font-size: 1.3rem; color: var(--sys-blue); font-weight: 700; }
 
-/* ── EquipmentSlot ── */
+/* Equipment section layout */
 .equipment-title { font-size: 0.8rem; color: #718096; margin-bottom: 10px; letter-spacing: 1px; text-transform: uppercase; }
 .equipment-slots { display: grid; grid-template-columns: repeat(5,1fr); gap: 8px; }
 .equipment-slot  { display: flex; flex-direction: column; align-items: center; }
@@ -246,7 +250,7 @@ body {
   font-weight: 600;
 }
 
-/* ── LevelCard ── */
+/* Equipment slot box for selected items */
 .level-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; margin-bottom: 30px; }
 .level-card {
   padding: 20px 10px;
@@ -261,16 +265,16 @@ body {
   font-family: 'Rajdhani', sans-serif;
   gap: 5px;
 }
+/* Level selection cards */
 .level-card:hover:not(.locked) { border-color: var(--sys-blue-dark); }
 .level-card.active  { border-color: var(--sys-blue); color: var(--sys-blue); background: rgba(0,229,255,0.05); }
 .level-card.locked  { cursor: not-allowed; opacity: 0.5; background: #000; }
 .lvl-name { font-size: 0.7rem; font-weight: 700; }
-
-/* ── Quest select ── */
+/* Locked level state prevents unavailable selection */
 .quest-selection { margin-bottom: 30px; }
 .quest-selection label { display: block; font-size: 0.8rem; color: #718096; margin-bottom: 8px; letter-spacing: 1px; }
 
-/* ── Roulette ── */
+/* Quest selection dropdown area */
 .roulette-subtitle { font-size: 0.8rem; color: #718096; margin-bottom: 20px; letter-spacing: 1px; }
 .spin-limit-info {
   display: flex;
@@ -281,6 +285,8 @@ body {
   background: rgba(255,204,0,0.05);
   border: 1px solid var(--sys-gold);
 }
+/* Roulette container for random workout generator */
+/* Spin counter and daily spin limits */
 .spin-label { font-size: 0.8rem; color: #718096; letter-spacing: 1px; }
 .spin-count { font-size: 1rem; color: var(--sys-gold); font-weight: 700; }
 
@@ -291,6 +297,7 @@ body {
   background: radial-gradient(ellipse at center, rgba(0,229,255,0.3) 0%, transparent 70%);
   z-index: 5; pointer-events: none;
 }
+/* Workout display container */
 .roulette-strip { display: flex; flex-direction: column; transition: transform 4s cubic-bezier(0.25,0.46,0.45,0.94); }
 .roulette-item  { height: 80px; display: flex; align-items: center; justify-content: space-between; padding: 0 20px; border-bottom: 1px solid #1a202c; font-size: 0.9rem; }
 .r-name  { color: var(--sys-blue); font-weight: 600; flex: 1; }
@@ -300,7 +307,7 @@ body {
 .warning-text { color: #ff6464; font-size: 0.9rem; margin-bottom: 8px; font-weight: 600; }
 .info-text    { color: #a0aec0; font-size: 0.85rem; }
 
-/* ── WorkoutCard ── */
+/* Workout card shows selected/generated workout */
 .workout-display  { margin-bottom: 30px; }
 .workout-card     { background: rgba(0,229,255,0.05); border: 1px solid var(--sys-blue-dark); padding: 25px; margin-bottom: 20px; text-align: center; }
 .w-title          { font-size: 1.8rem; color: var(--sys-blue); margin-bottom: 20px; text-shadow: 0 0 10px rgba(0,229,255,0.3); }
@@ -308,16 +315,16 @@ body {
 .detail-box       { background: rgba(255,255,255,0.03); padding: 15px; border: 1px solid #2d3748; }
 .detail-label     { display: block; font-size: 0.7rem; color: #718096; margin-bottom: 8px; letter-spacing: 1px; }
 .detail-value     { display: block; font-size: 1.5rem; color: var(--sys-gold); font-weight: 700; }
-
+/* Difficulty display information */
 .difficulty-info  { display: flex; justify-content: space-between; padding: 15px; background: rgba(255,255,255,0.02); border-left: 3px solid var(--sys-blue); margin-bottom: 15px; }
 .diff-label { color: #718096; font-size: 0.8rem; }
 .diff-value { color: var(--sys-blue); font-weight: 600; }
-
+/* XP reward box shows earned experience points */
 .xp-reward-box { display: flex; justify-content: space-between; padding: 15px; background: rgba(255,204,0,0.05); border: 1px solid var(--sys-gold); }
 .reward-label  { color: #718096; font-size: 0.8rem; }
 .reward-value  { color: var(--sys-gold); font-weight: 700; }
 
-/* ── Post-workout ── */
+/* Post-workout success message */
 .success-banner { font-size: 2rem; font-weight: 800; color: var(--sys-blue); text-shadow: 0 0 15px var(--sys-blue); margin-bottom: 30px; text-align: center; }
 
 .xp-gained-box   { background: rgba(0,229,255,0.1); border: 2px solid var(--sys-blue); padding: 20px; text-align: center; margin-bottom: 20px; box-shadow: 0 0 15px rgba(0,229,255,0.2); }
@@ -329,18 +336,18 @@ body {
 .levelup-text { display: block; font-size: 1.5rem; color: var(--sys-gold); margin-bottom: 8px; font-weight: 800; }
 .new-level    { display: block; font-size: 1.1rem; color: var(--sys-blue); letter-spacing: 1px; }
 
-/* ── ProtocolBox ── */
+/* Recovery section with protocol recommendations */
 .recovery-section { margin-bottom: 30px; }
 .recovery-title   { font-size: 1rem; color: var(--sys-blue); margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px; }
 .protocol-box     { background: rgba(255,255,255,0.02); border-left: 3px solid var(--sys-blue); padding: 15px; margin-bottom: 12px; }
 .protocol-header  { font-size: 0.9rem; color: var(--sys-blue); margin-bottom: 8px; font-weight: 600; }
 .protocol-text    { font-size: 0.85rem; color: #cbd5e0; line-height: 1.5; }
-
+/* Bonus quest section */
 .bonus-quest-box { background: rgba(255,204,0,0.05); border: 1px dashed var(--sys-gold); padding: 20px; margin-top: 20px; text-align: center; }
 .bonus-quest-box h4 { color: var(--sys-gold); margin-bottom: 10px; font-size: 0.9rem; }
 .quest-text { font-size: 1.1rem; color: white; font-weight: 500; }
 
-/* ── HistoryItem ── */
+/* Workout history list container */
 .history-list { max-height: 300px; overflow-y: auto; margin-bottom: 20px; }
 .history-item { padding: 12px; background: rgba(255,255,255,0.02); margin-bottom: 8px; border-left: 2px solid var(--sys-blue); cursor: pointer; transition: background 0.2s; }
 .history-item:hover { background: rgba(0,229,255,0.05); }
@@ -352,25 +359,25 @@ body {
 .h-xp      { font-size: 0.8rem; color: var(--sys-blue); margin-top: 4px; font-weight: 600; }
 .empty-msg { text-align: center; color: #718096; padding: 20px; }
 
-/* ── History Detail ── */
+/* Detailed workout history card */
 .detail-card { background: rgba(0,229,255,0.05); border: 1px solid var(--sys-blue-dark); padding: 20px; margin-bottom: 20px; }
 .detail-card h3 { font-size: 1.5rem; color: var(--sys-blue); margin-bottom: 10px; }
 .detail-meta    { font-size: 0.82rem; color: #718096; margin-bottom: 6px; }
 .detail-xp      { font-size: 1rem; color: var(--sys-gold); font-weight: 700; margin-top: 10px; }
 
-/* ── Nav buttons ── */
+/* Navigation button stack layout */
 .nav-buttons { display: flex; flex-direction: column; gap: 0; }
 
-/* ── Footer ── */
+/* Footer styling */
 .footer-bar { margin-top: 20px; font-size: 0.7rem; color: #4a5568; letter-spacing: 3px; text-align: center; }
 
-/* ── Animations ── */
+/* Fade animation when switching components/pages */
 .animate-fade { animation: fadeIn 0.5s ease-out; }
 @keyframes fadeIn { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:translateY(0)} }
 
 .text-center { text-align: center; }
 
-/* ── Scrollbar ── */
+/* Custom scrollbar styling for system window */
 .system-window::-webkit-scrollbar { width: 8px; }
 .system-window::-webkit-scrollbar-track { background: transparent; }
 .system-window::-webkit-scrollbar-thumb { background: var(--sys-blue-dark); border-radius: 4px; }
